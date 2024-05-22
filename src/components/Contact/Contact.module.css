@@ -1,0 +1,21 @@
+.contactCard {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 340px;
+  height: 80px;
+}
+.contactText {
+  display: flex;
+  align-items: center;
+}
+.icon {
+  margin-right: 7px;
+}
+.btnCard {
+  background-color: darkgray;
+  color: #fff;
+}
