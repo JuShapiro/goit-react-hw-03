@@ -1,6 +1,6 @@
 import "modern-normalize";
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ContactForm from "./components/ContactForm/ContactForm";
 import SearchBox from "./components/SearchBox/SearchBox";
@@ -8,7 +8,17 @@ import ContactList from "./components/ContactList/ContactList";
 import initialContacts from "./components/contacts.json";
 
 const App = () => {
-  const [contacts, setContacts] = useState(initialContacts);
+  const [contacts, setContacts] = useState(() => {
+    const savedContacts = localStorage.getItem("saved");
+    if (savedContacts !== null) {
+      return JSON.parse(savedContacts);
+    }
+    return initialContacts;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("saved", JSON.stringify(contacts));
+  }, [contacts]);
 
   const [filter, setFilter] = useState("");
   const filteredContacts = contacts.filter((contact) =>
