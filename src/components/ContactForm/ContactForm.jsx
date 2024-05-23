@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import { useId } from "react";
 import * as Yup from "yup";
 
-const phoneRegExp = /^[0-9]{3}?-[0-9]{2}?-[0-9]{2}?$/;
+const phoneRegExp = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
