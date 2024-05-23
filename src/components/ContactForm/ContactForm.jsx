@@ -4,8 +4,6 @@ import { nanoid } from "nanoid";
 import { useId } from "react";
 import * as Yup from "yup";
 
-const phoneRegExp = /^[0-9]{3}?-[0-9]{2}?-[0-9]{2}?$/;
-
 const validationSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, "Too Short!")
@@ -14,8 +12,7 @@ const validationSchema = Yup.object().shape({
   number: Yup.string()
     .min(3, "Too Short!")
     .max(50, "Too Long!")
-    .required("Required")
-    .matches(phoneRegExp, "Please follow pattern 123-45-67"),
+    .required("Required"),
 });
 
 const initialValues = {
@@ -50,7 +47,7 @@ const ContactForm = ({ addContact }) => {
               name="name"
               type="text"
               id={nameContact}
-              placeholder="Name"
+              placeholder="Name ..."
               className={css.fieldForm}
             />
             <ErrorMessage name="name" component="span" className={css.error} />
