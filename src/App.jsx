@@ -9,12 +9,21 @@ import initialContacts from "./components/contacts.json";
 
 const App = () => {
   const [contacts, setContacts] = useState(initialContacts);
+
+  const [filter, setFilter] = useState("");
+  const filteredContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  const resetFilter = () => {
+    setFilter("");
+  };
   return (
     <div>
       <h1>Phonebook</h1>
       <ContactForm />
-      <SearchBox />
-      <ContactList contacts={contacts} />
+      <SearchBox value={filter} onFilter={setFilter} onReset={resetFilter} />
+      <ContactList contacts={filteredContacts} />
     </div>
   );
 };
