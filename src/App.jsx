@@ -18,10 +18,16 @@ const App = () => {
   const resetFilter = () => {
     setFilter("");
   };
+
+  const addContact = (newContact) => {
+    setContacts((prevContacts) => {
+      return [...prevContacts, newContact];
+    });
+  };
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm />
+      <ContactForm addContact={addContact} />
       <SearchBox value={filter} onFilter={setFilter} onReset={resetFilter} />
       <ContactList contacts={filteredContacts} />
     </div>
